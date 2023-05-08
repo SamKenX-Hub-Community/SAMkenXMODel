@@ -161,6 +161,7 @@ class SNSEvent(BaseModel):
 class FunctionUrlConfig(BaseModel):
     AuthType: SamIntrinsicable[str] = functionurlconfig("AuthType")
     Cors: Optional[PassThroughProp] = functionurlconfig("Cors")
+    InvokeMode: Optional[PassThroughProp]  # TODO: add to doc
 
 
 class KinesisEventProperties(BaseModel):
@@ -465,6 +466,7 @@ class ScheduleV2EventProperties(BaseModel):
     ScheduleExpressionTimezone: Optional[PassThroughProp] = schedulev2eventproperties("ScheduleExpressionTimezone")
     StartDate: Optional[PassThroughProp] = schedulev2eventproperties("StartDate")
     State: Optional[PassThroughProp] = schedulev2eventproperties("State")
+    OmitName: Optional[bool]  # TODO: add doc
 
 
 class ScheduleV2Event(BaseModel):

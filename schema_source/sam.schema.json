@@ -1160,7 +1160,7 @@
               "type": "string"
             }
           ],
-          "markdownDescription": "The type of authorization for your function URL\\. Set to `AWS_IAM` to use IAM to authorize requests\\. Set to `NONE` for open access\\.  \nFor more information, see [Function URLs](https://docs.aws.amazon.com/lambda/latest/dg/urls-auth.html) in the *AWS Lambda Developer Guide*  \n*Type*: String  \n*Required*: Yes  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`AuthType`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-authorizationtype) property of an `AWS::Lambda::Url` resource\\.",
+          "markdownDescription": "The type of authorization for your function URL\\. To use AWS Identity and Access Management \\(IAM\\) to authorize requests, set to `AWS_IAM`\\. For open access, set to `NONE`\\.  \n*Type*: String  \n*Required*: Yes  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`AuthType`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-url.html#cfn-lambda-url-authtype) property of an `AWS::Lambda::Url` resource\\.",
           "title": "AuthType"
         },
         "Cors": {
@@ -1169,8 +1169,11 @@
               "$ref": "#/definitions/PassThroughProp"
             }
           ],
-          "markdownDescription": "The Cross\\-Origin Resource Sharing \\(CORS\\) settings for your function URL\\.  \n*Type*: [Cors](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html)  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`Cors`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html) property of an `AWS::Lambda::Url` resource\\.",
+          "markdownDescription": "The cross\\-origin resource sharing \\(CORS\\) settings for your function URL\\.  \n*Type*: [Cors](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html)  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`Cors`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-lambda-url-cors.html) property of an `AWS::Lambda::Url` resource\\.",
           "title": "Cors"
+        },
+        "InvokeMode": {
+          "$ref": "#/definitions/PassThroughProp"
         }
       },
       "required": [
@@ -3642,7 +3645,7 @@
               "$ref": "#/definitions/PassThroughProp"
             }
           ],
-          "markdownDescription": "Specifies whether clients can invoke your API by using the default `execute-api` endpoint\\. By default, clients can invoke your API with the default `https://{api_id}.execute-api.{region}.amazonaws.com`\\. To require that clients use a custom domain name to invoke your API, specify `True`\\.  \n*Type*: Boolean  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is similar to the [`DisableExecuteApiEndpoint`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-disableexecuteapiendpoint) property of an `AWS::ApiGateway::RestApi` resource\\. It is passed directly to the [https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-endpoint-configuration.html](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-endpoint-configuration.html) property of an `x-amazon-apigateway-endpoint-configuration` extension, which gets added to the [`Body`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-body) property of an `AWS::ApiGateway::RestApi` resource\\.",
+          "markdownDescription": "Specifies whether clients can invoke your API by using the default `execute-api` endpoint\\. By default, clients can invoke your API with the default `https://{api_id}.execute-api.{region}.amazonaws.com`\\. To require that clients use a custom domain name to invoke your API, specify `True`\\.  \n*Type*: Boolean  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is similar to the `[ DisableExecuteApiEndpoint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-disableexecuteapiendpoint)` property of an `AWS::ApiGateway::RestApi` resource\\. It is passed directly to the `disableExecuteApiEndpoint` property of an `[ x\\-amazon\\-apigateway\\-endpoint\\-configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-endpoint-configuration.html)` extension, which gets added to the ` [ Body](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-restapi.html#cfn-apigateway-restapi-body)` property of an `AWS::ApiGateway::RestApi` resource\\.",
           "title": "DisableExecuteApiEndpoint"
         },
         "Domain": {
@@ -5387,7 +5390,7 @@
               "$ref": "#/definitions/PassThroughProp"
             }
           ],
-          "markdownDescription": "The deployment package type of the Lambda function\\. For more information, see [Lambda deployment packages](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) in the *AWS Lambda Developer Guide*\\.  \n**Notes**:  \n1\\. If this property is set to `Zip` \\(default\\), then either `CodeUri` or `InlineCode` applies, and `ImageUri` is ignored\\.  \n2\\. If this property is set to `Image`, then only `ImageUri` applies, and both `CodeUri` and `InlineCode` are ignored\\. The Amazon ECR repository required to store the functionsl container image can be auto created by the AWS SAM CLI\\. For more information, see [sam deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html)\\.  \n*Valid values*: `Zip` or `Image`  \n*Type*: String  \n*Required*: No  \n*Default*: `Zip`  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`PackageType`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-packagetype) property of an `AWS::Lambda::Function` resource\\.",
+          "markdownDescription": "The deployment package type of the Lambda function\\. For more information, see [Lambda deployment packages](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html) in the *AWS Lambda Developer Guide*\\.  \n**Notes**:  \n1\\. If this property is set to `Zip` \\(default\\), then either `CodeUri` or `InlineCode` applies, and `ImageUri` is ignored\\.  \n2\\. If this property is set to `Image`, then only `ImageUri` applies, and both `CodeUri` and `InlineCode` are ignored\\. The Amazon ECR repository required to store the function's container image can be auto created by the AWS SAM CLI\\. For more information, see [sam deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html)\\.  \n*Valid values*: `Zip` or `Image`  \n*Type*: String  \n*Required*: No  \n*Default*: `Zip`  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`PackageType`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-packagetype) property of an `AWS::Lambda::Function` resource\\.",
           "title": "PackageType"
         },
         "PermissionsBoundary": {
@@ -5927,6 +5930,10 @@
           "markdownDescription": "The name of the schedule\\. If you don't specify a name, AWS SAM generates a name in the format `Function-Logical-IDEvent-Source-Name` and uses that ID for the schedule name\\.  \n*Type*: String  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`Name`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-scheduler-schedule.html#cfn-scheduler-schedule-name) property of an `AWS::Scheduler::Schedule` resource\\.",
           "title": "Name"
         },
+        "OmitName": {
+          "title": "Omitname",
+          "type": "boolean"
+        },
         "PermissionsBoundary": {
           "allOf": [
             {
@@ -6291,7 +6298,7 @@
               "$ref": "#/definitions/PassThroughProp"
             }
           ],
-          "markdownDescription": "Specifies whether clients can invoke your HTTP API by using the default `execute-api` endpoint `https://{api_id}.execute-api.{region}.amazonaws.com`\\. By default, clients can invoke your API with the default endpoint\\. To require that clients only use a custom domain name to invoke your API, disable the default endpoint\\.  \n*Type*: Boolean  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`DisableExecuteApiEndpoint`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-api.html#cfn-apigatewayv2-api-disableexecuteapiendpoint) property of an `AWS::ApiGatewayV2::Api` resource\\.",
+          "markdownDescription": "Specifies whether clients can invoke your HTTP API by using the default `execute-api` endpoint `https://{api_id}.execute-api.{region}.amazonaws.com`\\. By default, clients can invoke your API with the default endpoint\\. To require that clients only use a custom domain name to invoke your API, disable the default endpoint\\.  \n*Type*: Boolean  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is similar to the `[ DisableExecuteApiEndpoint](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-api.html#cfn-apigatewayv2-api-disableexecuteapiendpoint)` property of an `AWS::ApiGatewayV2::Api` resource\\. It is passed directly to the `disableExecuteApiEndpoint` property of an `[ x\\-amazon\\-apigateway\\-endpoint\\-configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-endpoint-configuration.html)` extension, which gets added to the ` [ Body](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigatewayv2-api.html#cfn-apigatewayv2-api-body)` property of an `AWS::ApiGatewayV2::Api` resource\\.",
           "title": "DisableExecuteApiEndpoint"
         },
         "Domain": {
@@ -6435,7 +6442,7 @@
               "$ref": "#/definitions/PassThroughProp"
             }
           ],
-          "markdownDescription": "The name of the hosted zone that you want to create records in\\.  \nSpecify either `HostedZoneName` or `HostedZoneId`, but not both\\. If you have multiple hosted zones with the same domain name, you must specify the hosted zone using `HostedZoneId`\\.  \n*Type*: String  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`HostedZoneName`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset-1.html#cfn-route53-recordset-hostedzonename) property of an `AWS::Route53::RecordSetGroup RecordSet` resource\\.",
+          "markdownDescription": "The name of the hosted zone that you want to create records in\\. You must include a trailing dot \\(for example, `www.example.com.`\\) as part of the `HostedZoneName`\\.  \nSpecify either `HostedZoneName` or `HostedZoneId`, but not both\\. If you have multiple hosted zones with the same domain name, you must specify the hosted zone using `HostedZoneId`\\.  \n*Type*: String  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`HostedZoneName`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset-1.html#cfn-route53-recordset-hostedzonename) property of an `AWS::Route53::RecordSetGroup RecordSet` resource\\.",
           "title": "HostedZoneName"
         },
         "IpV6": {
@@ -6637,6 +6644,9 @@
     "samtranslator__internal__schema_source__aws_serverless_simpletable__Properties": {
       "additionalProperties": false,
       "properties": {
+        "PointInTimeRecoverySpecification": {
+          "$ref": "#/definitions/PassThroughProp"
+        },
         "PrimaryKey": {
           "allOf": [
             {
@@ -7580,6 +7590,10 @@
           ],
           "markdownDescription": "The name of the schedule\\. If you don't specify a name, AWS SAM generates a name in the format `StateMachine-Logical-IDEvent-Source-Name` and uses that ID for the schedule name\\.  \n*Type*: String  \n*Required*: No  \n*AWS CloudFormation compatibility*: This property is passed directly to the [`Name`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-scheduler-schedule.html#cfn-scheduler-schedule-name) property of an `AWS::Scheduler::Schedule` resource\\.",
           "title": "Name"
+        },
+        "OmitName": {
+          "title": "Omitname",
+          "type": "boolean"
         },
         "PermissionsBoundary": {
           "allOf": [
